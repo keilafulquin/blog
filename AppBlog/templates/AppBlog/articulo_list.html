@@ -1,0 +1,45 @@
+{% extends "AppBlog/madre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+
+
+
+
+
+<div>
+    <div style="float:left; width:23%; height:20px;">
+       
+    </div>
+         {% if object_list %}     
+              <div style = "float:left; width: 50%; margin: 2%;">        
+                  {% for articulo in object_list %}
+                <div class="card mb-3 post-card" style="width: 100%;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        
+                        <img src="{{articulo.imagen}}" >
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{articulo.titulo}}</h5>
+                          <p class="card-text"> por {{articulo.autor}}</p>                  
+                          <p class="card-text"><small class="text-muted">Ult. modificación {{articulo.fecha}}</small></p>
+                          <p class="card-text"><a href="{% url 'ArticuloDetail' articulo.id %}" class="btn btn-primary">¡Ver más!</a></p>                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+         {% else %}
+         <div style = "float:left; width: 50%; margin: 12%; text-align: justify">
+         <h1><i> No hay ningún articulo aún.</i></h1> 
+        </div>
+         {% endif %}
+   </div><!--Close #1.b-->
+   <div style="float:left; width:23%; height:20px;"><!--Open #1.c-->
+
+   </div><!--Close #1.c-->
+   </div><!--Close #1-->
+   
+   {% endblock %}

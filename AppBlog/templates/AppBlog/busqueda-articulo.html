@@ -1,0 +1,13 @@
+{% extends "AppBlog/madre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+
+<ul>
+    {% for articulo in articulos %}
+        <li>{{articulo.titulo}}: <br>
+            {{articulo.texto}}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

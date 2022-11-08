@@ -1,0 +1,29 @@
+{% extends "AppBlog/madre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+
+
+{% if articulo %}
+    <div class = "post-container">
+        <h1 class="post-title">{{ articulo.titulo}}</h1>
+        <img src="{{articulo.imagen}}" alt=""> 
+        <h2 class="post-subtitle">{{ articulo.subtitulo}}</h2>
+        <div class = "post-autor"> 
+            <h4>Por {{articulo.autor}}</h4>
+        </div>        
+        <p>{{articulo.cuerpo|safe}}</p>
+        <a href="{% url 'ArticuloEdit' articulo.id %}"> Editar</a>
+        <a href="{% url 'ArticuloDelete' articulo.id %}">Borrar</a>
+        <a href="{% url 'Lista' %}">Regresar</a>
+        
+    </div>
+    {% else %}
+    <div style="width: 80%; margin-left: auto; margin-right: auto; border: 1px solid green"></div>
+        <h3>{{ error }}</h3>
+    </div>
+        
+    {% endif %}
+
+
+{% endblock %}

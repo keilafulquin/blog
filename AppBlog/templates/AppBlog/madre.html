@@ -1,0 +1,269 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block titulo %}
+        {% endblock %}
+    </title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"/>
+    
+    <link type = 'text/css' rel="stylesheet" href='../../static/css/style.css'  />
+    
+        
+</head>
+
+<body>
+    <style>
+        section{
+    clear:both;
+}
+.container-social-network{
+    width:30%;
+    height:1%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+.link-sc{
+    float:left;
+    width: 31%;
+    margin: 1%;
+   
+   
+}
+
+.link-sc img{
+    width: 100%;
+    height: auto;
+    border-radius: 0%;
+   
+}
+.container-about{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.container-about h2{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.container-about p{
+    text-align: center;
+}
+
+.container-about > img{
+    border-radius: 50%;
+    width: 96px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+.form-container{
+    border: 1px solid rgb(219, 96, 205);
+    border-radius: 5px;
+    padding:2.5%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+#form-profile{
+ width: 100%;   
+}
+
+#form-edit-post{
+    margin-top: 2%;
+    margin-bottom:2%
+}
+
+.form-container > h1,h4 {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.form-container table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container p{
+    text-align: center;
+}
+
+table input,table label{
+    margin-bottom: 3%;
+}
+
+
+
+
+.form-container input[type=submit] {
+    margin-top: 3%;
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    color:#fff;
+    background-color: #007bff;
+    font-weight: bold;
+}
+
+.post-card{
+    border: 1px solid rgb(226, 130, 189);
+   }
+   
+.column{
+    width: 45%;            
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.row{
+    float: left;
+    width: 100%;
+}
+
+.login-form{
+    width: 20%;
+    margin: 20px;                                    
+}        
+.fuente-navbar{
+    color: black;
+}
+.post-container{
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    border: 1px solid rgb(218, 110, 180);
+}        
+.img-logo{
+    margin-right: 2%;
+}
+
+.post-title{
+    text-align: center;
+    margin-top: 5%;  
+    font-family: arial black;                      
+}
+
+.post-subtitle{
+    text-align: center;
+    margin-top: 2%;  
+    font-family: arial black;                      
+}
+
+.post-autor{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 5%; 
+}
+
+.post-autor > h4 {
+    font-weight:bold ;
+}
+.post-container > p
+{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    font-family: Arial;
+}
+.img-content {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;            
+}
+.img-profile-post{
+    border-radius: 50%;
+    max-width:32px;
+    height: auto;
+    display: inline;
+}
+
+.profile-div{
+    float:left;
+    width: 45%;
+    height: 100%;
+    margin:2%;
+    padding: 1%;
+    border: 1px solid black;
+}
+.btn-card
+{
+    width:32%
+} 
+.btn-buscar {
+    color: #000000;
+    background: transparent;
+    border: 2px solid #eeabe3;
+    border-radius: 6px;
+}
+    </style>
+    <nav class="navbar navbar-expand-lg navbar "  style="background: rgb(255,224,233);">    
+        <a href="{% url 'Lista' %}"> <img src="../../../media/imagenes/coderblog.png" alt="" class= "img-logo" style="width: 200px"></a>
+        <button class="fuente-navbar navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            
+
+            <ul class="navbar-nav mr-auto" >
+                                                                
+                {% if not request.user.is_authenticated %}
+                <li class="nav-item" >
+                    <a class="fuente-navbar nav-link" href="{% url 'Login' %}">Login</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="fuente-navbar nav-link" href="{% url 'Register' %}">Registrarse</a>
+                </li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li class="nav-item" >
+                    <a class="fuente-navbar nav-link" href="{% url 'Nuevo Articulo' %}">Crear Articulo</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="fuente-navbar nav-link" href="{% url 'Logout' %}">Logout</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="fuente-navbar nav-link" href="{% url 'EditarPerfil' %}">Editar Perfil</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="fuente-navbar nav-link" href="{% url 'AgregarAvatar' %}">Agregar Avatar</a>
+                </li>
+                {% if avatar %}
+                    <img height="40px" src="{{ avatar }}"/>
+                {% endif %}
+                <p> Hola, {{ user.username }} !!</p>  
+                {% endif %}       
+            </ul>
+            
+        </div>
+    </nav>
+    {% block contenidoQueCambia %}
+    {% endblock %}
+
+</body>
